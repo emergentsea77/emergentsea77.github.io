@@ -5,40 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Automated Study Notes</title>
     <style>
-        body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 700px; margin: 40px auto; padding: 0 20px; color: #333; background: #fafafa; }
-        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        h1 { border-bottom: 2px solid #eaecef; padding-bottom: 10px; color: #24292f; }
-        h2 { color: #0969da; margin-top: 30px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        ul { list-style-type: none; padding-left: 5px; }
-        li { margin: 10px 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; max-width: 700px; margin: 40px auto; padding: 0 20px; color: #24292f; background: #f6f8fa; }
+        .container { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #d0d7de; }
+        h1 { border-bottom: 2px solid #d0d7de; padding-bottom: 12px; color: #24292f; margin-top: 0; font-size: 2rem; }
+        .meta { font-size: 0.9em; color: #57606a; margin-bottom: 25px; }
+
+        /* Retractable Topic Styles */
+        details { border: 1px solid #d0d7de; border-radius: 6px; margin-bottom: 12px; background-color: #ffffff; overflow: hidden; transition: all 0.2s ease; }
+        details[open] { border-color: #0969da; box-shadow: 0 2px 8px rgba(9,105,218,0.1); }
+        summary { padding: 14px 16px; font-weight: 600; font-size: 1.1rem; cursor: pointer; color: #24292f; background-color: #f6f8fa; list-style: none; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+        summary:hover { background-color: #eaeef2; color: #0969da; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '▶'; font-size: 0.8rem; color: #57606a; transition: transform 0.2s ease; }
+        details[open] summary::after { transform: rotate(90deg); color: #0969da; }
+        details[open] summary { border-bottom: 1px solid #d0d7de; background-color: #fff; }
+
+        /* Bulleted Subtopic List Styles */
+        ul { list-style-type: disc; padding-left: 30px; margin: 15px 0; }
+        li { margin: 10px 0; padding-left: 4px; }
+        li::marker { color: #0969da; font-size: 1.1em; }
         a { color: #0969da; text-decoration: none; font-weight: 500; }
-        a:hover { text-decoration: underline; }
-        .meta { font-size: 0.85em; color: #57606a; }
+        a:hover { text-decoration: underline; color: #0c4ea6; }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>📚 My Notes Directory</h1>
-    <p class="meta">Automatically updated index of topic-wise notes.</p>
-<h2>Exploring Spring Framework</h2>
-<ul>
-    <li><a href="Exploring%20Spring%20FrameWork/Autowiring.html">Autowiring</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Autowiring_In_Spring_Boot.html">Autowiring In Spring Boot</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Constructor_Injection.html">Constructor Injection</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Creating_Interface.html">Creating Interface</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/DI_Using_Spring_Boot.html">Di Using Spring Boot</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Getbean_By_Type.html">Getbean By Type</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Inner_Bean.html">Inner Bean</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Lazy_Init_Bean.html">Lazy Init Bean</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Object_Creation.html">Object Creation</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Primary_Bean.html">Primary Bean</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Ref_Attribute.html">Ref Attribute</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Scopes.html">Scopes</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Setter_Injection.html">Setter Injection</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Spring_1st_Project.html">Spring 1St Project</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/Spring_Based_Xml_Config.html">Spring Based Xml Config</a></li>
-    <li><a href="Exploring%20Spring%20FrameWork/spring_getting_started_telusko.html">Spring Getting Started Telusko</a></li>
-</ul>
+    <p class="meta">Click a main topic folder below to expand its subtopics.</p>
+    <details>
+  <summary>Exploring Spring Framework Xml And Java Based Configuration</summary>
+  <ul>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Autowire.html">Autowire</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Autowire_field__constructor__Setter.html">Autowire Field  Constructor  Setter</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Autowiring.html">Autowiring</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Autowiring_In_Spring_Boot.html">Autowiring In Spring Boot</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Bean_Name.html">Bean Name</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Component_Stereotype_Annotations.html">Component Stereotype Annotations</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Constructor_Injection.html">Constructor Injection</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Creating_Interface.html">Creating Interface</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/DI_Using_Spring_Boot.html">Di Using Spring Boot</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Getbean_By_Type.html">Getbean By Type</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Inner_Bean.html">Inner Bean</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Java_Based_Configuration.html">Java Based Configuration</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Lazy_Init_Bean.html">Lazy Init Bean</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Object_Creation.html">Object Creation</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Primary_Annotation.html">Primary Annotation</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Primary_Bean.html">Primary Bean</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Primary_and__Qualifier.html">Primary And  Qualifier</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Ref_Attribute.html">Ref Attribute</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Scope_Annotation.html">Scope Annotation</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Scope_and_Value_Annotations.html">Scope And Value Annotations</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Scopes.html">Scopes</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Setter_Injection.html">Setter Injection</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Spring_1st_Project.html">Spring 1St Project</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/Spring_Based_Xml_Config.html">Spring Based Xml Config</a></li>
+    <li><a href="Exploring%20Spring%20FrameWork%20XML%20and%20JAVA%20based%20Configuration/spring_getting_started_telusko.html">Spring Getting Started Telusko</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Moving To Spring Boot, Spring Jdbc & Spring-Boot Web</summary>
+  <ul>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Accepting_Data_the_Servlet_Way.html">Accepting Data The Servlet Way</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Create_a_Spring_Boot_Web_Project.html">Create A Spring Boot Web Project</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Creating_A_JSP_Page.html">Creating A Jsp Page</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Creating_A_Servlet_Project.html">Creating A Servlet Project</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Creating_A_Spring_JDBC_Project.html">Creating A Spring Jdbc Project</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Creating_a_Controller.html">Creating A Controller</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Different_Layers.html">Different Layers</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Display_Data_on_Result_Page.html">Display Data On Result Page</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Introduction_to_MVC.html">Introduction To Mvc</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/JdbcTemplate.html">Jdbctemplate</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/ModelAndView.html">Modelandview</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Model_Object.html">Model Object</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Need_for_ModelAttribute.html">Need For Modelattribute</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Repository_Layer.html">Repository Layer</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/RequestMapping.html">Requestmapping</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/RequestParam%20%281%29.html">Requestparam (1)</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/RequestParam.html">Requestparam</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Responding_To_The_Client.html">Responding To The Client</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/RowMapper.html">Rowmapper</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Running_Tomcat.html">Running Tomcat</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Schema_and_Data_Files.html">Schema And Data Files</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Sending_data_to_Controller.html">Sending Data To Controller</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Service_Class.html">Service Class</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Servlet_Mapping.html">Servlet Mapping</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Setting_Prefix_and_Suffix.html">Setting Prefix And Suffix</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Spring_JDBC_Introduction%20%281%29.html">Spring Jdbc Introduction (1)</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Spring_JDBC_Introduction.html">Spring Jdbc Introduction</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Spring_JDBC_Postgres.html">Spring Jdbc Postgres</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Spring_To_SpringBoot.html">Spring To Springboot</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Student_Service_and_Repository.html">Student Service And Repository</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Using_Annotations_in_SpringBoot.html">Using Annotations In Springboot</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Using_ModelAttribute.html">Using Modelattribute</a></li>
+    <li><a href="Moving%20to%20Spring%20Boot%2C%20Spring%20JDBC%20%26%20Spring-Boot%20Web/Web_Applications_Introduction.html">Web Applications Introduction</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Rest Using Spring-Boot And Spring Data Jpa</summary>
+  <ul>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Connecting_React_and_Spring.html">Connecting React And Spring</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Content_Negotiation.html">Content Negotiation</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Creating_Table_and_Inserting_Data.html">Creating Table And Inserting Data</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Creating_a_Rest_Controller.html">Creating A Rest Controller</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/FindById.html">Findbyid</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Findall.html">Findall</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Http_Methods.html">Http Methods</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/JPA_in_Job_App.html">Jpa In Job App</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/JPQL_Query.html">Jpql Query</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Loading_Data_and_Entity.html">Loading Data And Entity</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/PathVariable.html">Pathvariable</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Put_and_Delete_Mapping.html">Put And Delete Mapping</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/REST_using_Spring_Boot_Introduction.html">Rest Using Spring Boot Introduction</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/React_UI_for_Delete_And_Update.html">React Ui For Delete And Update</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/React_UI_for_Search.html">React Ui For Search</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Search_By_Keyword.html">Search By Keyword</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Sending_Data_and_RequestBody.html">Sending Data And Requestbody</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Spring_Data_JPA_Introduction.html">Spring Data Jpa Introduction</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Understanding_the_React_UI.html">Understanding The React Ui</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Update_and_Delete.html">Update And Delete</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/What_is_ORM_and_JPA.html">What Is Orm And Jpa</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/What_is_REST.html">What Is Rest</a></li>
+    <li><a href="REST%20Using%20Spring-Boot%20and%20Spring%20Data%20JPA/Working_with_Postman.html">Working With Postman</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Spring Mvc Without Spring-Boot</summary>
+  <ul>
+    <li><a href="Spring%20MVC%20Without%20Spring-Boot/Configuring_the_DispatcherServlet.html">Configuring The Dispatcherservlet</a></li>
+    <li><a href="Spring%20MVC%20Without%20Spring-Boot/Creating_a_Spring_MVC_Project.html">Creating A Spring Mvc Project</a></li>
+    <li><a href="Spring%20MVC%20Without%20Spring-Boot/Dispatcher_Servlet.html">Dispatcher Servlet</a></li>
+    <li><a href="Spring%20MVC%20Without%20Spring-Boot/Internal_Resource_View_Resolver.html">Internal Resource View Resolver</a></li>
+    <li><a href="Spring%20MVC%20Without%20Spring-Boot/Running_Tomcat_in_Eclipse.html">Running Tomcat In Eclipse</a></li>
+    <li><a href="Spring%20MVC%20Without%20Spring-Boot/Spring_MVC_Introduction.html">Spring Mvc Introduction</a></li>
+    <li><a href="Spring%20MVC%20Without%20Spring-Boot/Summary.html">Summary</a></li>
+  </ul>
+</details>
 
 </div>
 </body>
