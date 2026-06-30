@@ -5,13 +5,13 @@ on:
     branches:
       - main # Change to master if your default branch is master
     paths:
-      - 'docs/**' # Only run when files inside /docs change
+      - 'docs/**'
 
 jobs:
   build-index:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Allows the action to commit index.html back to your repo
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -31,7 +31,7 @@ jobs:
           docs_dir = "docs"
           output_file = os.path.join(docs_dir, "index.html")
 
-          # HTML Template Boilerplate
+          # Upgraded HTML Template with Accoridion & Bullet Styling
           html_content = """<!DOCTYPE html>
           <html lang="en">
           <head>
@@ -39,49 +39,57 @@ jobs:
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>My Automated Study Notes</title>
               <style>
-                  body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 700px; margin: 40px auto; padding: 0 20px; color: #333; background: #fafafa; }
-                  .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-                  h1 { border-bottom: 2px solid #eaecef; padding-bottom: 10px; color: #24292f; }
-                  h2 { color: #0969da; margin-top: 30px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-                  ul { list-style-type: none; padding-left: 5px; }
-                  li { margin: 10px 0; }
+                  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; max-width: 700px; margin: 40px auto; padding: 0 20px; color: #24292f; background: #f6f8fa; }
+                  .container { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #d0d7de; }
+                  h1 { border-bottom: 2px solid #d0d7de; padding-bottom: 12px; color: #24292f; margin-top: 0; font-size: 2rem; }
+                  .meta { font-size: 0.9em; color: #57606a; margin-bottom: 25px; }
+
+                  /* Retractable Topic Styles */
+                  details { border: 1px solid #d0d7de; border-radius: 6px; margin-bottom: 12px; background-color: #ffffff; overflow: hidden; transition: all 0.2s ease; }
+                  details[open] { border-color: #0969da; box-shadow: 0 2px 8px rgba(9,105,218,0.1); }
+                  summary { padding: 14px 16px; font-weight: 600; font-size: 1.1rem; cursor: pointer; color: #24292f; background-color: #f6f8fa; list-style: none; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+                  summary:hover { background-color: #eaeef2; color: #0969da; }
+                  summary::-webkit-details-marker { display: none; }
+                  summary::after { content: '▶'; font-size: 0.8rem; color: #57606a; transition: transform 0.2s ease; }
+                  details[open] summary::after { transform: rotate(90deg); color: #0969da; }
+                  details[open] summary { border-bottom: 1px solid #d0d7de; background-color: #fff; }
+
+                  /* Bulleted Subtopic List Styles */
+                  ul { list-style-type: disc; padding-left: 30px; margin: 15px 0; }
+                  li { margin: 10px 0; padding-left: 4px; }
+                  li::marker { color: #0969da; font-size: 1.1em; }
                   a { color: #0969da; text-decoration: none; font-weight: 500; }
-                  a:hover { text-decoration: underline; }
-                  .meta { font-size: 0.85em; color: #57606a; }
+                  a:hover { text-decoration: underline; color: #0c4ea6; }
               </style>
           </head>
           <body>
           <div class="container">
               <h1>📚 My Notes Directory</h1>
-              <p class="meta">Automatically updated index of topic-wise notes.</p>
+              <p class="meta">Click a main topic folder below to expand its subtopics.</p>
+              <!-- SECTIONS_PLACEHOLDER -->
           </div>
           </body>
           </html>"""
 
-          # Scan directory structure
           dynamic_sections = []
 
-          # Walk through the docs directory
           for root, dirs, files in sorted(os.walk(docs_dir)):
-              # Filter for HTML files, excluding index.html itself
               html_files = [f for f in files if f.endswith('.html') and f != 'index.html']
               if not html_files:
                   continue
 
-              # Determine topic name based on folder hierarchy
               relative_path = os.path.relpath(root, docs_dir)
               if relative_path == ".":
                   topic_name = "General Notes"
               else:
                   topic_name = relative_path.replace(os.sep, " » ").title()
 
-              section_html = f"<h2>{topic_name}</h2>\n<ul>\n"
+              # Wrap sections in details and summary tags for the retractable behavior
+              section_html = f"<details>\n  <summary>{topic_name}</summary>\n  <ul>\n"
 
               for f in sorted(html_files):
-                  # Prettify file name for the link title
                   display_name = f.replace('.html', '').replace('-', ' ').replace('_', ' ').title()
 
-                  # Create a correct relative URL path for the web browser
                   if relative_path == ".":
                       web_path = urllib.parse.quote(f)
                   else:
@@ -89,16 +97,15 @@ jobs:
 
                   section_html += f"    <li><a href=\"{web_path}\">{display_name}</a></li>\n"
 
-              section_html += "</ul>\n"
+              section_html += "  </ul>\n</details>\n"
               dynamic_sections.append(section_html)
 
-          # Inject dynamic folders sections right before closing body tags
           all_sections_text = "\n".join(dynamic_sections)
-          final_html = html_content.replace("</div>\n</body>", f"{all_sections_text}\n</div>\n</body>")
+          final_html = html_content.replace("<!-- SECTIONS_PLACEHOLDER -->", all_sections_text)
 
           with open(output_file, "w", encoding="utf-8") as out:
               out.write(final_html)
-          print("Successfully generated index.html")
+          print("Successfully generated retractable index.html")
           EOF
           python generate_index.py
 
@@ -107,6 +114,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@://github.com"
           git add docs/index.html
-          # Only commit if changes actually exist
           git diff-index --quiet HEAD || git commit -m "chore: auto-update index.html [skip ci]"
           git push
